@@ -9,7 +9,6 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <!-- 1. Tải lõi đồ thị trước -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- 2. Tải thư viện nhận diện cử chỉ -->
@@ -17,7 +16,6 @@
 <!-- 3. Tải plugin zoom -->
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2.0.1"></script>
 <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
-
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body {
@@ -28,7 +26,6 @@ body {
     display: flex;
     justify-content: center;
 }
-
 /* --- STYLE MÀN HÌNH ĐĂNG NHẬP --- */
 .login-overlay {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
@@ -56,7 +53,6 @@ body {
 }
 .btn-login:hover { background: #008c95; }
 .error-msg { color: #ff5722; font-size: 13px; margin-top: 15px; display: none; }
-
 /* --- STYLE TRANG CHỌN PHÂN HỆ (MENU TỔNG) --- */
 .category-page {
     display: none;
@@ -99,7 +95,6 @@ body {
 }
 .category-card.egg .btn-select-cat { background: #f0e34c; color: #000; }
 .category-card.vaccine .btn-select-cat { background: #00adb5; color: #fff; }
-
 /* --- STYLE CONTAINER CHÍNH --- */
 .container {
     display: none;
@@ -112,7 +107,6 @@ body {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
     border: 1px solid #2d2d2d;
 }
-
 @media (max-width: 768px) {
     .card-container { flex-direction: column; }
     .switch-group { grid-template-columns: 1fr !important; }
@@ -122,7 +116,6 @@ body {
     body { padding: 5px; }
     .container { padding: 15px; border-radius: 0; }
 }
-
 h2 { font-size: 22px; margin-bottom: 5px; color: #00adb5; text-transform: uppercase; }
 p.subtitle { font-size: 13px; color: #777; margin-bottom: 20px; }
 .card-container { display: flex; gap: 15px; margin-bottom: 15px; }
@@ -141,7 +134,6 @@ p.subtitle { font-size: 13px; color: #777; margin-bottom: 20px; }
     background: #252525; text-align: center; font-weight: bold;
     border: 1px solid #333; color: #fff;
 }
-
 /* --- KHỐI ĐIỀU KHIỂN & CÀI ĐẶT --- */
 .control-block {
     background: #252525; padding: 15px; border-radius: 12px;
@@ -212,7 +204,6 @@ p.subtitle { font-size: 13px; color: #777; margin-bottom: 20px; }
 </style>
 </head>
 <body>
-
 <!-- 1. MÀN HÌNH ĐĂNG NHẬP -->
 <div class="login-overlay" id="login-overlay">
     <div class="login-box">
@@ -229,7 +220,6 @@ p.subtitle { font-size: 13px; color: #777; margin-bottom: 20px; }
         <div class="error-msg" id="error-msg">⚠️ Sai tài khoản/mật khẩu hoặc quyền truy cập bị từ chối!</div>
     </div>
 </div>
-
 <!-- 2. TRANG CHỌN PHÂN HỆ CHÍNH (KHO TRỨNG & TỦ VACXIN) -->
 <div class="category-page" id="category-page">
     <h2 style="color: #00adb5; font-size: 26px; text-transform: uppercase; margin-bottom: 8px;">
@@ -245,7 +235,6 @@ p.subtitle { font-size: 13px; color: #777; margin-bottom: 20px; }
             <p>Giám sát nhiệt độ & độ ẩm buồng ấp, điều khiển các kênh Relay làm mát, sưởi ấm kho trứng.</p>
             <button class="btn-select-cat">TRUY CẬP KHO TRỨNG ➔</button>
         </div>
-
         <!-- Thẻ Phân Hệ 2: Tủ Vacxin -->
         <div class="category-card vaccine" id="card-cat-tuvacxin">
             <div class="category-icon">💉</div>
@@ -254,21 +243,18 @@ p.subtitle { font-size: 13px; color: #777; margin-bottom: 20px; }
             <button class="btn-select-cat">TRUY CẬP TỦ VACXIN ➔</button>
         </div>
     </div>
-
     <div style="margin-top: 40px;">
         <button id="btn-logout" style="background: #333; color: #aaa; border: 1px solid #444; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: bold;">
             🚪 ĐĂNG XUẤT
         </button>
     </div>
 </div>
-
 <!-- 3. BẢNG ĐIỀU KHIỂN CHI TIẾT CỦA THIẾT BỊ ĐƯỢC CHỌN -->
 <div class="container" id="main-container">
     <div style="text-align: center; width: 100%; margin-bottom: 20px;">
         <h2 id="main-header-title" style="margin-bottom: 5px;">Hệ Thống Giám Sát Bel Gà Tân Châu 2</h2>
         <p class="subtitle" style="margin: 0;">Mặc định hiển thị ngày hôm nay - Chọn ngày để xem lịch sử cũ</p>
     </div>
-
     <!-- LOGO TRÒN BEL GÀ (GIỮ TRỌN VẸN 100% CÁC VECTOR PATH) -->
     <div class="logo-container">
         <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; margin: 20px 0;">
@@ -346,7 +332,6 @@ p.subtitle { font-size: 13px; color: #777; margin-bottom: 20px; }
             </div>
         </div>
     </div>
-
     <!-- NÚT TELEGRAM CÓ VIỀN TRẮNG -->
     <div style="text-align: center; margin: 0 auto 20px auto; width: fit-content;">
         <a href="https://t.me/Canhbaokhotrung" target="_blank" style="display: flex; align-items: center; justify-content: center; background: #0088cc; color: #ffffff !important; padding: 8px 16px 8px 8px; border-radius: 25px; text-decoration: none; font-size: 14px; font-weight: bold; box-shadow: 0 4px 6px rgba(0,0,0,0.3); transition: background 0.3s;">
@@ -360,7 +345,6 @@ p.subtitle { font-size: 13px; color: #777; margin-bottom: 20px; }
             Tham gia nhóm Telegram
         </a>
     </div>
-
     <!-- TÊN KHU VỰC / VỊ TRÍ GIÁM SÁT -->
     <div style="width: 100%; display: flex; justify-content: center; margin-top: 20px; margin-bottom: 20px; box-sizing: border-box;">
         <div style="width: 100%; text-align: center;">
@@ -387,7 +371,6 @@ p.subtitle { font-size: 13px; color: #777; margin-bottom: 20px; }
             </div>
         </div>
     </div>
-
     <!-- KHỐI CARD NHIỆT ĐỘ & ĐỘ ẨM KÈM SVG ICON -->
     <div class="card-container">
         <!-- Card Nhiệt Độ -->
@@ -418,9 +401,7 @@ p.subtitle { font-size: 13px; color: #777; margin-bottom: 20px; }
             </div>
         </div>
     </div>
-
     <div id="alert-display">Đang kiểm tra trạng thái...</div>
-
     <!-- BẢNG ĐIỀU KHIỂN RELAY CÓ SVG BÁNH RĂNG CÀI ĐẶT -->
     <div class="control-block" style="margin-top: 40px;">
         <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 15px;">
@@ -464,7 +445,6 @@ p.subtitle { font-size: 13px; color: #777; margin-bottom: 20px; }
                     <label class="toggle-switch"><input type="checkbox" id="switch-relay1"><span class="slider"></span></label>
                 </div>
             </div>
-
             <!-- Thiết bị 2 -->
             <div class="switch-item" style="flex-direction: column; align-items: flex-start; gap: 8px;">
                 <input type="text" id="name-relay2" placeholder="Tên thiết bị..." style="width: 100%; background: #333; color: white; padding: 5px; border: none; border-radius: 4px;">
@@ -491,7 +471,6 @@ p.subtitle { font-size: 13px; color: #777; margin-bottom: 20px; }
                     <label class="toggle-switch"><input type="checkbox" id="switch-relay2"><span class="slider"></span></label>
                 </div>
             </div>
-
             <!-- Thiết bị 3 -->
             <div class="switch-item" style="flex-direction: column; align-items: flex-start; gap: 8px;">
                 <input type="text" id="name-relay3" placeholder="Tên thiết bị..." style="width: 100%; background: #333; color: white; padding: 5px; border: none; border-radius: 4px;">
@@ -518,7 +497,6 @@ p.subtitle { font-size: 13px; color: #777; margin-bottom: 20px; }
                     <label class="toggle-switch"><input type="checkbox" id="switch-relay3"><span class="slider"></span></label>
                 </div>
             </div>
-
             <!-- Thiết bị 4 -->
             <div class="switch-item" style="flex-direction: column; align-items: flex-start; gap: 8px;">
                 <input type="text" id="name-relay4" placeholder="Tên thiết bị..." style="width: 100%; background: #333; color: white; padding: 5px; border: none; border-radius: 4px;">
@@ -547,7 +525,6 @@ p.subtitle { font-size: 13px; color: #777; margin-bottom: 20px; }
             </div>
         </div>
     </div>
-
     <!-- THIẾT LẬP NGƯỠNG CẢNH BÁO CÓ SVG CHUÔNG CẢNH BÁO -->
     <div class="control-block" style="margin-top: 40px;">
         <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 15px;">
@@ -580,7 +557,6 @@ p.subtitle { font-size: 13px; color: #777; margin-bottom: 20px; }
         <button class="btn-action" id="btn-toggle-lock" style="background: #555; color: white; margin-top: 15px; margin-bottom: 5px;">🔓 MỞ KHÓA CHỈNH SỬA</button>
         <button class="btn-action btn-save-config" id="btn-save-config" style="background: #2196f3; color: white;">LƯU CẤU HÌNH CẢNH BÁO</button>
     </div>
-
     <!-- CÀI ĐẶT MẬT KHẨU CẤU HÌNH CÓ SVG CHÌA KHÓA (CHỐNG TỰ ĐIỀN) -->
     <div class="control-block" style="margin-top: 40px;">
         <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 15px;">
@@ -611,7 +587,6 @@ p.subtitle { font-size: 13px; color: #777; margin-bottom: 20px; }
             </button>
         </div>
     </div>
-
     <!-- LỊCH SỬ & BIỂU ĐỒ CÓ SVG ĐỒNG HỒ BÁO CÁO -->
     <div class="control-block" style="margin-top: 40px;">
         <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 15px;">
@@ -651,13 +626,11 @@ p.subtitle { font-size: 13px; color: #777; margin-bottom: 20px; }
         </div>
     </div>
 </div>
-
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
 import { getDatabase, ref, onValue, set, get, update, remove } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-database.js";
 import { getAuth, signInWithEmailAndPassword, signOut, setPersistence, browserSessionPersistence } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-auth.js";
 import CryptoJS from "https://esm.sh/crypto-js";
-
 // ================= CẤU HÌNH FIREBASE =================
 const firebaseConfig = {
     apiKey: "AIzaSyDdBPKyLiIt5x2EaiocweqpbRbv01iACC4",
@@ -668,22 +641,18 @@ const firebaseConfig = {
     messagingSenderId: "897122628330",
     appId: "1:897122628330:web:3d306de5d1902b05ef9d93"
 };
-
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 const auth = getAuth(app);
-
 // --- BIẾN ĐIỀU HƯỚNG PHÂN HỆ & THIẾT BỊ ---
 let currentCategory = "khotrung"; // "khotrung" hoặc "vacxin"
 let currentDeviceId = "";
 let activeListeners = [];
-
 // Hàm lấy đường dẫn gốc Firebase theo phân hệ đã chọn
 function getDbPath(subpath = "") {
     const root = (currentCategory === "vacxin") ? "devices_vacxin" : "devices";
     return subpath ? `${root}/${subpath}` : root;
 }
-
 const tempElement = document.getElementById('txt-temp');
 const humElement = document.getElementById('txt-hum');
 const datePicker = document.getElementById('date-picker');
@@ -697,7 +666,6 @@ const btnSaveConfig = document.getElementById('btn-save-config');
 const alertDisplay = document.getElementById('alert-display');
 const btnToggleLock = document.getElementById('btn-toggle-lock');
 const btnLockIo = document.getElementById('btn-lock-io');
-
 let isLocked = true;
 let isIoLocked = true;
 let excelRawData = [];
@@ -706,18 +674,15 @@ let configMinHum = 0, configMaxHum = 100;
 let latestTimeStr = "";
 let latestTemp = "No Signal";
 let latestHum = "No Signal";
-
 const localDate = new Date();
 const todayStr = localDate.getFullYear() + '-' + String(localDate.getMonth() + 1).padStart(2, '0') + '-' + String(localDate.getDate()).padStart(2, '0');
 datePicker.value = todayStr;
 datePicker.max = todayStr;
-
 // Tạo Container Trang Danh sách Thiết bị động
 const deviceSelectionPage = document.createElement("div");
 deviceSelectionPage.id = "device-selection-page";
 deviceSelectionPage.style.cssText = "display:none; padding: 25px; max-width: 1000px; margin: 0 auto; text-align: center; color: white;";
 document.body.appendChild(deviceSelectionPage);
-
 const optionsCommon = (color, titleText) => ({
     responsive: true,
     maintainAspectRatio: false,
@@ -733,22 +698,18 @@ const optionsCommon = (color, titleText) => ({
         }
     }
 });
-
 const tempChart = new Chart(document.getElementById('tempChart').getContext('2d'), {
     type: 'line', data: { labels: [], datasets: [{ label: 'Lịch sử Nhiệt Độ (°C)', data: [], borderColor: '#ff5722', backgroundColor: 'rgba(255, 87, 34, 0.1)', borderWidth: 2, tension: 0.3 }] },
     options: optionsCommon('#ff5722', 'Nhiệt Độ (°C)')
 });
-
 const humChart = new Chart(document.getElementById('humChart').getContext('2d'), {
     type: 'line', data: { labels: [], datasets: [{ label: 'Lịch sử Độ Ẩm (%)', data: [], borderColor: '#00bcd4', backgroundColor: 'rgba(0, 188, 212, 0.1)', borderWidth: 2, tension: 0.3 }] },
     options: optionsCommon('#00bcd4', 'Độ Ẩm (%)')
 });
-
 function clearAllListeners() {
     activeListeners.forEach(unsub => { if (typeof unsub === 'function') unsub(); });
     activeListeners = [];
 }
-
 function resetDeviceState() {
     latestTemp = "No Signal";
     latestHum = "No Signal";
@@ -763,20 +724,17 @@ function resetDeviceState() {
     if (maxTempInput) maxTempInput.value = "";
     if (minHumInput) minHumInput.value = "";
     if (maxHumInput) maxHumInput.value = "";
-
     // Xóa trắng mật khẩu cấu hình để chống autofill
     const oldPass = document.getElementById('old-password');
     const newPass = document.getElementById('new-password');
     if (oldPass) { oldPass.value = ""; oldPass.setAttribute('readonly', 'readonly'); }
     if (newPass) { newPass.value = ""; newPass.setAttribute('readonly', 'readonly'); }
-
     if (tempChart && humChart) {
         tempChart.data.labels = []; tempChart.data.datasets[0].data = [];
         humChart.data.labels = []; humChart.data.datasets[0].data = [];
         tempChart.update(); humChart.update();
     }
 }
-
 // ================= XỬ LÝ ĐĂNG NHẬP =================
 document.getElementById('btn-login').addEventListener('click', () => {
     const userEmail = document.getElementById('username').value.trim();
@@ -799,7 +757,6 @@ document.getElementById('btn-login').addEventListener('click', () => {
             document.getElementById('error-msg').style.display = 'block';
         });
 });
-
 // ================= 1. HIỂN THỊ TRANG CHỌN PHÂN HỆ =================
 function hienThiTrangChonPhanHe() {
     clearAllListeners();
@@ -809,24 +766,20 @@ function hienThiTrangChonPhanHe() {
     deviceSelectionPage.style.display = 'none';
     document.getElementById('category-page').style.display = 'block';
 }
-
 document.getElementById('card-cat-khotrung').addEventListener('click', () => {
     currentCategory = "khotrung";
     hienThiDanhSachThietBi();
 });
-
 document.getElementById('card-cat-tuvacxin').addEventListener('click', () => {
     currentCategory = "vacxin";
     hienThiDanhSachThietBi();
 });
-
 document.getElementById('btn-logout').addEventListener('click', () => {
     signOut(auth).then(() => {
         document.getElementById('category-page').style.display = 'none';
         document.getElementById('login-overlay').style.display = 'flex';
     });
 });
-
 // ================= 2. HIỂN THỊ DANH SÁCH THIẾT BỊ =================
 function hienThiDanhSachThietBi() {
     clearAllListeners();
@@ -835,11 +788,9 @@ function hienThiDanhSachThietBi() {
     document.getElementById('category-page').style.display = 'none';
     document.getElementById('main-container').style.display = 'none';
     deviceSelectionPage.style.display = 'block';
-
     const catTitle = (currentCategory === "vacxin") ? "HỆ THỐNG QUẢN LÝ TỦ VACXIN" : "HỆ THỐNG QUẢN LÝ KHO TRỨNG";
     const catColor = (currentCategory === "vacxin") ? "#00adb5" : "#f0e34c";
     const catIcon = (currentCategory === "vacxin") ? "💉" : "🥚";
-
     deviceSelectionPage.innerHTML = `
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; flex-wrap: wrap; gap: 10px;">
             <button id="btn-back-to-cat" style="background: #333; color: white; border: 1px solid #555; padding: 10px 18px; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 13px;">
@@ -855,11 +806,9 @@ function hienThiDanhSachThietBi() {
             ➕ TẠO THÊM THIẾT BỊ MỚI (${currentCategory === "vacxin" ? "TỦ VACXIN" : "KHO TRỨNG"})
         </button>
     `;
-
     document.getElementById('btn-back-to-cat').addEventListener('click', () => {
         hienThiTrangChonPhanHe();
     });
-
     const unsubDevicesList = onValue(ref(db, getDbPath()), (snapshot) => {
         const grid = document.getElementById('device-grid');
         if (!grid) return;
@@ -874,7 +823,6 @@ function hienThiDanhSachThietBi() {
                 
                 let t = "Mất kết nối", h = "Mất kết nối";
                 let tColor = "#d32f2f", hColor = "#d32f2f";
-
                 if (thoiGianCapNhat && rawT !== undefined && rawH !== undefined) {
                     const thoiGianEsp = new Date(thoiGianCapNhat.replace(/-/g, '/'));
                     const thoiGianHienTai = new Date();
@@ -893,7 +841,6 @@ function hienThiDanhSachThietBi() {
                         }
                     }
                 }
-
                 const tenKhuVuc = item.TenThietBi && item.TenThietBi.trim() !== "" 
                                 ? item.TenThietBi 
                                 : "<span style='color: #555; font-style: italic;'>(Chưa đặt tên vị trí)</span>";
@@ -901,7 +848,6 @@ function hienThiDanhSachThietBi() {
                 const deletePassword = item.device?.matkhauthietbi?.password;
                 const hasDeletePassword = (deletePassword && deletePassword.trim() !== "");
                 const lockIcon = hasDeletePassword ? "🔒" : "🔑";
-
                 const card = document.createElement('div');
                 card.style.cssText = `background: #252525; padding: 20px; border-radius: 12px; border-left: 5px solid ${catColor}; text-align: left; cursor: pointer; transition: 0.2s; position: relative;`;
                 card.innerHTML = `
@@ -918,40 +864,33 @@ function hienThiDanhSachThietBi() {
                         <button class="btn-lock-device" style="background: #424242; color: white; border: none; width: 30px; height: 30px; border-radius: 6px; cursor: pointer; font-size: 14px; display: flex; align-items: center; justify-content: center;" title="${hasDeletePassword ? 'Đang khóa xóa' : 'Chưa khóa xóa'}">${lockIcon}</button>
                     </div>
                 `;
-
                 card.onmouseover = () => card.style.background = "#2d2d2d";
                 card.onmouseout = () => card.style.background = "#252525";
-
                 card.addEventListener('click', () => {
                     currentDeviceId = id;
                     deviceSelectionPage.style.display = 'none';
                     document.getElementById('main-container').style.display = 'block';
                     startFirebaseSync();
                 });
-
                 card.querySelector('.btn-delete-device').addEventListener('click', (e) => {
                     e.stopPropagation();
                     xoaThietBiBaoMat(id, deletePassword);
                 });
-
                 card.querySelector('.btn-lock-device').addEventListener('click', (e) => {
                     e.stopPropagation();
                     thietLapHoacMoKhoa(id, deletePassword);
                 });
-
                 grid.appendChild(card);
             });
         }
     });
     activeListeners.push(unsubDevicesList);
-
     document.getElementById('btn-add-new-device').addEventListener('click', async () => {
         const defaultPrefix = (currentCategory === "vacxin") ? "vacxin1" : "device1";
         const deviceIdInput = prompt(`Nhập mã thiết bị mới cho [${catTitle}] (Ví dụ: ${defaultPrefix}, viết liền không dấu):`);
         if (!deviceIdInput) return;
         const formatId = deviceIdInput.trim().toLowerCase();
         if (formatId === "") { alert("❌ Tên thiết bị không được để trống!"); return; }
-
         try {
             const deviceRef = ref(db, getDbPath(formatId));
             const snapshot = await get(deviceRef);
@@ -977,7 +916,6 @@ function hienThiDanhSachThietBi() {
         }
     });
 }
-
 function thietLapHoacMoKhoa(id, encodedPassword) {
     const hasPassword = (encodedPassword && encodedPassword.trim() !== "");
     if (!hasPassword) {
@@ -997,7 +935,6 @@ function thietLapHoacMoKhoa(id, encodedPassword) {
         }
     }
 }
-
 function xoaThietBiBaoMat(id, encodedPassword) {
     const hasPassword = (encodedPassword && encodedPassword.trim() !== "");
     if (hasPassword) {
@@ -1012,15 +949,12 @@ function xoaThietBiBaoMat(id, encodedPassword) {
             .then(() => alert(`Đã xóa thiết bị thành công!`));
     }
 }
-
 // ================= 3. BẢNG ĐIỀU KHIỂN & ĐỒNG BỘ THIẾT BỊ CHI TIẾT =================
 function startFirebaseSync() {
     clearAllListeners();
     resetDeviceState();
-
     const catTitle = (currentCategory === "vacxin") ? "Tủ Vacxin" : "Kho Trứng";
     document.getElementById('main-header-title').innerText = `Hệ Thống Giám Sát ${catTitle} Bel Gà`;
-
     // Thêm thanh điều hướng quay lại
     let navBar = document.getElementById('nav-top-bar');
     if (!navBar) {
@@ -1046,7 +980,6 @@ function startFirebaseSync() {
     } else {
         document.getElementById('btn-back-to-dev-list').innerText = `⬅️ ĐỔI THIẾT BỊ (${catTitle.toUpperCase()})`;
     }
-
     function updateInputType(i) {
         const modeEl = document.getElementById(`mode-relay${i}`);
         const startInput = document.getElementById(`start-relay${i}`);
@@ -1060,7 +993,6 @@ function startFirebaseSync() {
             startInput.type = "number"; stopInput.type = "number"; startInput.step = "any"; stopInput.step = "any";
         }
     }
-
     for (let i = 1; i <= 4; i++) {
         const modeSelect = document.getElementById(`mode-relay${i}`);
         if (modeSelect) {
@@ -1068,7 +1000,6 @@ function startFirebaseSync() {
             modeSelect.parentNode.replaceChild(newModeSelect, modeSelect);
             newModeSelect.addEventListener('change', () => updateInputType(i));
         }
-
         const unsubRelayConfig = onValue(ref(db, getDbPath(`${currentDeviceId}/DieuKhien/ThietBi${i}_Config`)), (snapshot) => {
             const data = snapshot.val();
             if (data) {
@@ -1080,13 +1011,11 @@ function startFirebaseSync() {
             }
         });
         activeListeners.push(unsubRelayConfig);
-
         const btnSave = document.getElementById(`btn-save-relay${i}`);
         const newBtnSave = btnSave.cloneNode(true);
         btnSave.parentNode.replaceChild(newBtnSave, btnSave);
         newBtnSave.addEventListener('click', () => saveDeviceConfig(i));
     }
-
     const unsubDieuKhien = onValue(ref(db, getDbPath(`${currentDeviceId}/DieuKhien`)), (snapshot) => {
         const data = snapshot.val();
         if (data) {
@@ -1098,11 +1027,9 @@ function startFirebaseSync() {
                 const labelEl = document.getElementById(`label-relay${i}`);
                 const deviceName = config ? config.Name : `TB ${i}`;
                 const currentMode = config ? config.Mode : "Manual";
-
                 labelEl.innerText = `${deviceName || 'TB ' + i}: ${status === 1 ? "ON" : "OFF"}`;
                 labelEl.style.color = status === 1 ? "#4caf50" : "#ccc";
                 switchEl.checked = (status === 1);
-
                 const isInteractiveMode = (currentMode === "Manual" || currentMode === "Timer" || currentMode === "DongHo");
                 if (isInteractiveMode && !isIoLocked) {
                     switchEl.disabled = false; switchEl.style.cursor = "pointer"; switchEl.parentElement.style.opacity = "1";
@@ -1113,7 +1040,6 @@ function startFirebaseSync() {
         }
     });
     activeListeners.push(unsubDieuKhien);
-
     const unsubCauHinh = onValue(ref(db, getDbPath(`${currentDeviceId}/CauHinh`)), (snapshot) => {
         const data = snapshot.val();
         if (data) {
@@ -1124,7 +1050,6 @@ function startFirebaseSync() {
         }
     });
     activeListeners.push(unsubCauHinh);
-
     const unsubHienTai = onValue(ref(db, getDbPath(`${currentDeviceId}/HienTai`)), (snapshot) => {
         const data = snapshot.val();
         if (snapshot.exists() && data) {
@@ -1136,7 +1061,6 @@ function startFirebaseSync() {
         }
     });
     activeListeners.push(unsubHienTai);
-
     for (let i = 1; i <= 4; i++) {
         const switchEl = document.getElementById(`switch-relay${i}`);
         const newSwitchEl = switchEl.cloneNode(true);
@@ -1145,7 +1069,6 @@ function startFirebaseSync() {
             set(ref(db, getDbPath(`${currentDeviceId}/DieuKhien/ThietBi${i}`)), e.target.checked ? 1 : 0);
         });
     }
-
     const inputTenKho = document.getElementById('input-ten-kho');
     if (inputTenKho) {
         inputTenKho.setAttribute('readonly', 'readonly');
@@ -1153,23 +1076,19 @@ function startFirebaseSync() {
             inputTenKho.value = snapshot.exists() ? snapshot.val() : "";
         });
         activeListeners.push(unsubTenThietBi);
-
         window.luuTenKhoFirebase = function(giatri) {
             if (!currentDeviceId) return;
             set(ref(db, getDbPath(`${currentDeviceId}/TenThietBi`)), giatri.trim())
                 .then(() => window.toggleKhoaTenKho());
         };
     }
-
     loadDataByDate(datePicker.value);
 }
-
 function saveDeviceConfig(i) {
     const name = document.getElementById(`name-relay${i}`)?.value || "";
     const mode = document.getElementById(`mode-relay${i}`)?.value || "Manual";
     let start = document.getElementById(`start-relay${i}`)?.value.trim() || "";
     let stop = document.getElementById(`stop-relay${i}`)?.value.trim() || "";
-
     if (mode === "Manual") {
         start = ""; stop = "";
         set(ref(db, getDbPath(`${currentDeviceId}/DieuKhien/ThietBi${i}_Config`)), { Name: name, Mode: "Manual", Start: "", Stop: "", Trigger: Date.now() });
@@ -1177,21 +1096,17 @@ function saveDeviceConfig(i) {
         alert(`✅ Thiết bị ${i} được đưa về Chế độ Thủ công (TẮT).`);
         return;
     }
-
     set(ref(db, getDbPath(`${currentDeviceId}/DieuKhien/ThietBi${i}_Config`)), { Name: name, Mode: mode, Start: start, Stop: stop, Trigger: Date.now() })
         .then(() => alert(`✅ Đã lưu cấu hình thiết bị ${i}!`));
 }
-
 setInterval(() => {
     if (!currentDeviceId) return;
     const now = Date.now();
     let isOffline = false;
-
     if (latestTimeStr && latestTimeStr.trim() !== "") {
         const thoiGianEsp = new Date(latestTimeStr.replace(/-/g, '/'));
         if (isNaN(thoiGianEsp.getTime()) || Math.abs(now - thoiGianEsp) > 15000) isOffline = true;
     } else isOffline = true;
-
     if (isOffline) {
         tempElement.innerText = "-"; humElement.innerText = "-";
         statusText.innerHTML = `<span class="dot" style="background-color:#ff5722;"></span> ❌ MẤT KẾT NỐI ESP32!`;
@@ -1199,7 +1114,6 @@ setInterval(() => {
         alertDisplay.style.color = "#ff5722";
         return;
     }
-
     if (latestTemp === "ERR" || latestTemp === "No Signal") {
         tempElement.innerText = "LỖI"; humElement.innerText = "LỖI";
         statusText.innerHTML = `<span class="dot" style="background-color:#ff5722;"></span> ❌ Lỗi cảm biến!`;
@@ -1208,16 +1122,13 @@ setInterval(() => {
     } else {
         tempElement.innerText = latestTemp + " °C"; humElement.innerText = latestHum + " %";
         statusText.innerHTML = `<span class="dot" id="status-dot"></span> Đã đồng bộ thành công!`;
-
         const valT = parseFloat(latestTemp), valH = parseFloat(latestHum);
         let msgT = (valT > configMaxTemp) ? "Nhiệt độ CAO" : ((valT < configMinTemp) ? "Nhiệt độ THẤP" : "Nhiệt độ BÌNH THƯỜNG");
         let msgH = (valH > configMaxHum) ? "Độ ẩm CAO" : ((valH < configMinHum) ? "Độ ẩm THẤP" : "Độ ẩm BÌNH THƯỜNG");
-
         alertDisplay.innerText = msgT + " | " + msgH;
         alertDisplay.style.color = (msgT.includes("BÌNH THƯỜNG") && msgH.includes("BÌNH THƯỜNG")) ? "#4caf50" : "#ff5722";
     }
 }, 2000);
-
 btnToggleLock.addEventListener('click', async () => {
     if (isLocked) {
         const userPassword = prompt("Nhập mật khẩu cấu hình ngưỡng:");
@@ -1233,12 +1144,10 @@ btnToggleLock.addEventListener('click', async () => {
             alert("🔓 Mở khóa thành công!");
         } catch (e) { alert("Lỗi: " + e.message); return; }
     } else { isLocked = true; }
-
     [minTempInput, maxTempInput, minHumInput, maxHumInput].forEach(el => { if (el) el.disabled = isLocked; });
     btnToggleLock.innerText = isLocked ? "🔒 MỞ KHÓA CHỈNH SỬA" : "🔓 KHÓA LẠI";
     btnToggleLock.style.background = isLocked ? "#555" : "#f44336";
 });
-
 btnLockIo.addEventListener('click', async function() {
     const cardParent = this.closest('.control-block');
     if (isIoLocked) {
@@ -1255,14 +1164,12 @@ btnLockIo.addEventListener('click', async function() {
             alert("🔓 Mở khóa thành công!");
         } catch (e) { return; }
     } else { isIoLocked = true; }
-
     if (cardParent) {
         cardParent.querySelectorAll('input, select, button:not(#btn-lock-io)').forEach(el => el.disabled = isIoLocked);
     }
     this.innerText = isIoLocked ? "🔒 MỞ KHÓA CHỈNH SỬA" : "🔓 KHÓA LẠI";
     this.style.background = isIoLocked ? "#555" : "#f44336";
 });
-
 btnSaveConfig.addEventListener('click', () => {
     set(ref(db, getDbPath(`${currentDeviceId}/CauHinh`)), {
         MinTemp: parseFloat(minTempInput.value) || 0,
@@ -1277,12 +1184,10 @@ btnSaveConfig.addEventListener('click', () => {
         btnToggleLock.style.background = "#555";
     });
 });
-
 document.getElementById('btn-set-password').addEventListener('click', async () => {
     const oldPass = document.getElementById('old-password').value;
     const newPass = document.getElementById('new-password').value;
     if (!newPass || newPass.length < 6) { alert("Mật khẩu mới phải có ít nhất 6 ký tự!"); return; }
-
     const passwordRef = ref(db, getDbPath(`${currentDeviceId}/device/config/password`));
     try {
         const snapshot = await get(passwordRef);
@@ -1301,21 +1206,17 @@ document.getElementById('btn-set-password').addEventListener('click', async () =
         if (newEl) { newEl.value = ""; newEl.setAttribute('readonly', 'readonly'); }
     } catch (e) { alert("Lỗi: " + e.message); }
 });
-
 const newDatePicker = datePicker.cloneNode(true);
 datePicker.parentNode.replaceChild(newDatePicker, datePicker);
 newDatePicker.addEventListener('change', (e) => loadDataByDate(e.target.value));
-
 function loadDataByDate(htmlTargetDate) {
     if (!currentDeviceId) return;
     const parts = htmlTargetDate.split('-');
     const formattedTargetDate = `${parts[2]}/${parts[1]}/${parts[0]}`;
-
     const unsubHistory = onValue(ref(db, getDbPath(`${currentDeviceId}/LichSu/${htmlTargetDate}`)), (snapshot) => {
         tempChart.data.labels = []; tempChart.data.datasets[0].data = [];
         humChart.data.labels = []; humChart.data.datasets[0].data = [];
         excelRawData = [];
-
         if (snapshot.exists()) {
             const data = snapshot.val();
             let count = 1;
@@ -1336,7 +1237,6 @@ function loadDataByDate(htmlTargetDate) {
     });
     activeListeners.push(unsubHistory);
 }
-
 document.getElementById('btn-download').addEventListener('click', () => {
     if(excelRawData.length === 0) { alert("Không có dữ liệu để xuất Excel!"); return; }
     const worksheet = XLSX.utils.json_to_sheet(excelRawData);
@@ -1344,13 +1244,11 @@ document.getElementById('btn-download').addEventListener('click', () => {
     XLSX.utils.book_append_sheet(workbook, worksheet, `DuLieu`);
     XLSX.writeFile(workbook, `BaoCao_${currentCategory}_${currentDeviceId}.xlsx`);
 });
-
 window.toggleKhoaTenKho = async function() {
     const input = document.getElementById('input-ten-kho');
     const iconDong = document.getElementById('icon-khoa-dong');
     const iconMo = document.getElementById('icon-khoa-mo');
     if (!input) return;
-
     if (input.hasAttribute('readonly')) {
         const userPassword = prompt("Nhập mật khẩu để sửa tên vị trí:");
         if (!userPassword) return;
